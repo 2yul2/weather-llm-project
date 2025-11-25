@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>날씨 웹사이트</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🌤 도시별 날씨 조회 🌤</h1>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="도시 이름을 입력하세요 (예: Seoul)"
+        />
+        <button id="searchBtn">검색</button>
+      </div>
+
+      <div id="weatherInfo" class="weather-box" style="display: none">
+        <img id="weatherIcon" src="" alt="날씨 아이콘" />
+        <div id="temp"></div>
+        <div id="description"></div>
+        <div id="today"></div>
+      </div>
+
+      <div id="errorBox" class="error" style="display: none"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
