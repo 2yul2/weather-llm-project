@@ -1,26 +1,32 @@
+/* 기본 초기화 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 전체 배경 + 모바일 중심 반응형 */
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #c9eaff, #ffffff);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   padding: 20px;
 }
 
+/* 메인 컨테이너 (반투명 카드 형태) */
 .container {
   width: 100%;
   max-width: 450px;
-  background: white;
+  background: rgba(255, 255, 255, 0.86);
   padding: 25px;
   border-radius: 18px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   text-align: center;
+  backdrop-filter: blur(4px);
 }
 
 /* 제목 */
@@ -30,7 +36,7 @@ body {
   font-weight: bold;
 }
 
-/* 검색 박스 */
+/* 🔎 검색 영역 */
 .search-box {
   display: flex;
   gap: 10px;
@@ -55,7 +61,7 @@ body {
   font-weight: bold;
 }
 
-/* 최근 검색 */
+/* 🕘 최근 검색어 버튼 */
 .recent-box {
   margin: 10px 0 15px;
   display: flex;
@@ -73,7 +79,7 @@ body {
   font-size: 14px;
 }
 
-/* 단위 버튼 */
+/* 🌡 단위 변경 버튼 */
 .unit-btn {
   margin-bottom: 15px;
   padding: 8px 12px;
@@ -84,14 +90,12 @@ body {
   font-weight: bold;
 }
 
-/* 날씨 박스 */
-.weather-box.hidden,
-.error.hidden,
-.aqi-box.hidden,
-.chart-container.hidden {
-  display: none;
+/* hidden 클래스 = 안 보이게 */
+.hidden {
+  display: none !important;
 }
 
+/* 현재 온도 */
 .temp {
   font-size: 34px;
   margin: 12px 0;
@@ -103,13 +107,14 @@ body {
   color: #555;
 }
 
+/* 상세 정보 (습도 / 풍속) */
 .details {
   margin: 10px 0;
   font-size: 14px;
   color: #333;
 }
 
-/* 미세먼지 */
+/* 🌫 미세먼지 박스 */
 .aqi-box {
   margin-top: 15px;
   background: #fff2d6;
@@ -117,7 +122,7 @@ body {
   border-radius: 15px;
 }
 
-/* 예보 */
+/* 📅 예보 카드 영역 */
 .forecast-box {
   margin-top: 15px;
   display: flex;
@@ -126,16 +131,49 @@ body {
   flex-wrap: wrap;
 }
 
+/* 예보 카드 스타일 */
 .forecast-card {
   background: #f0f8ff;
-  padding: 10px;
+  padding: 12px;
   border-radius: 12px;
   width: 110px;
   text-align: center;
   font-size: 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 160px;
 }
 
-/* 차트 */
+/* 카드 아이콘 크기 고정 */
+.forecast-card img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+/* 날짜 / 설명 간격 */
+.forecast-card h4 {
+  margin-bottom: 5px;
+}
+
+.forecast-card p {
+  margin: 3px 0;
+}
+
+/* 메인 아이콘 */
+#weatherIcon {
+  width: 90px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* 시간별 차트 */
 .chart-container {
   margin-top: 20px;
   background: #eef8ff;
@@ -143,7 +181,7 @@ body {
   border-radius: 15px;
 }
 
-/* 조언 */
+/* 옷차림 추천 */
 .tip {
   margin-top: 15px;
   padding: 10px;
@@ -152,37 +190,15 @@ body {
   font-size: 14px;
 }
 
-/* 에러 */
+/* 오류 메시지 */
 .error {
   margin-top: 15px;
   color: #ff5555;
   font-weight: bold;
 }
 
-/* 반응형 */
-@media (max-width: 480px) {
-  .container {
-    padding: 20px;
-  }
-  .forecast-card {
-    width: 100px;
-  }
-  .temp {
-    font-size: 30px;
-  }
-}
-#weatherIcon {
-  width: 90px; /* 원하는 너비(px)로 설정 */
-  height: auto; /* 원본 비율 유지 */
-  margin: 0 auto; /* 중앙 정렬 (필요하면) */
-  display: block; /* img 요소가 inline이니까 block으로 바꾸면 margin 자동 가운데 정렬 가능 */
-}
-.forecast-card h4 {
-  margin-bottom: 8px; /* 날짜와 이미지 사이 위쪽 간격 */
-}
-.forecast-card img {
-  width: 40px; /* 원하는 크기로 조절 */
-  height: auto; /* 원본 비율 유지 */
-  display: block; /* 이미지 중앙 정렬 용이 */
-  margin: 0 auto 8px; /* 가운데 정렬 */
+.city-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
