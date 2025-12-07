@@ -2,30 +2,63 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>날씨 웹사이트</title>
+    <title>유리의 날씨 예보</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+
   <body>
     <div class="container">
-      <h1>🌤 도시별 날씨 조회 🌤</h1>
+      <h1 class="title">🌤 유리의 날씨 예보 🌤</h1>
 
+      <!-- 검색 영역 -->
       <div class="search-box">
         <input
           type="text"
           id="cityInput"
-          placeholder="도시 이름을 입력하세요 (예: Seoul)"
+          placeholder="도시 이름을 입력하세요 (예: Seoul, 서울)"
         />
         <button id="searchBtn">검색</button>
       </div>
 
-      <div id="weatherInfo" class="weather-box" style="display: none">
-        <img id="weatherIcon" src="" alt="날씨 아이콘" />
-        <div id="temp"></div>
-        <div id="description"></div>
-        <div id="today"></div>
+      <!-- 최근 검색어 -->
+      <div id="recentContainer" class="recent-box"></div>
+
+      <!-- 단위 전환 -->
+      <button id="unitToggle" class="unit-btn">섭씨 → 화씨</button>
+
+      <!-- 현재 날씨 정보 -->
+      <div id="weatherInfo" class="weather-box hidden">
+        <img id="weatherIcon" alt="날씨 아이콘" />
+        <div id="temp" class="temp"></div>
+        <div id="description" class="desc"></div>
+        <div class="details">
+          <div id="humidity"></div>
+          <div id="wind"></div>
+          <div id="today"></div>
+        </div>
+        <div id="clothingTip" class="tip"></div>
       </div>
 
-      <div id="errorBox" class="error" style="display: none"></div>
+      <!-- 미세먼지 -->
+      <div id="aqiBox" class="aqi-box hidden">
+        <h3>🌫 미세먼지</h3>
+        <p id="aqiValue"></p>
+        <p id="aqiDesc"></p>
+      </div>
+
+      <!-- 시간별 차트 -->
+      <h2 class="subtitle">⏰ 시간별 날씨 변화</h2>
+      <div class="chart-container hidden">
+        <canvas id="hourlyChart"></canvas>
+      </div>
+
+      <!-- 3일 예보 -->
+      <h2 class="subtitle">📅 3일 예보</h2>
+      <div id="forecastContainer" class="forecast-box"></div>
+
+      <!-- 오류 -->
+      <div id="errorBox" class="error hidden"></div>
     </div>
 
     <script src="script.js"></script>
